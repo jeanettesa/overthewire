@@ -1,5 +1,5 @@
-# OverTheWire - Natas Level 15 -> Level 16
-# Code to get the password for level 16
+# OverTheWire - Natas Level 14 -> Level 15
+# Code to get the password for level 15
 # Run: python3 overthewire_natas15.py $Authorization_header_value
 
 import requests
