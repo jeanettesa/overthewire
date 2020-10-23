@@ -1,10 +1,10 @@
-# Level 8-> Level 9 ("input secret")
+# Level 7-> Level 8 ("input secret")
 # http://natas8.natas.labs.overthewire.org/
 # Get base64 string from hex "3d3d516343746d4d6d6c315669563362", reverse string, and decode to utf-8
 import base64
 base64.b64decode(bytearray.fromhex("3d3d516343746d4d6d6c315669563362").decode()[::-1]).decode()
 
-# Level 10-> Level 11
+# Level 9-> Level 10
 # http://natas10.natas.labs.overthewire.org/
 # Relevant server-side code: 
 # if(preg_match('/[;|&]/',$key)) { print "Input contains an illegal character!"; } else { passthru("grep -i $key dictionary.txt"); }
@@ -14,7 +14,8 @@ base64.b64decode(bytearray.fromhex("3d3d516343746d4d6d6c315669563362").decode()[
 # ".* /etc/natas_webpass/* , $matches, PREG_OFFSET_CAPTURE, -1"
 # Due to setting the offset to -1, the server-side regex is only checked against the final character of the second argument.
 
-# Level 13 -> Level 14
+# Level 12 -> Level 13
+# http://natas13.natas.labs.overthewire.org/
 # Relevant server-side code:
 # else if (! exif_imagetype($_FILES['uploadedfile']['tmp_name'])) { echo "File is not an image"; } 
 # 
